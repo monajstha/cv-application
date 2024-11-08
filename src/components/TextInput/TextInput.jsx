@@ -1,13 +1,25 @@
-import React, { forwardRef, useRef, useState } from "react";
+import React from "react";
 import "./textInput.css";
 
-export default function MyInput({ label, ...otherProps }) {
+export default function TextInput({
+  id,
+  label,
+  value,
+  onChange,
+  ...otherProps
+}) {
   return (
     <div className="container">
-      <label className="label">{label}</label>
-      <input className="textInput" {...otherProps} />
+      <label htmlFor={id} className="label">
+        {label}
+      </label>
+      <input
+        id={id}
+        className="textInput"
+        {...otherProps}
+        value={value}
+        onChange={onChange}
+      />
     </div>
   );
 }
-
-// export default TextInput;

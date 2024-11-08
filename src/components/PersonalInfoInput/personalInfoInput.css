@@ -12,3 +12,18 @@
   padding: 7px;
   font-size: 1rem;
 }
+
+#cv_form .submitBtn {
+  padding: 7px 0;
+  background-color: #4caf50; /* Try adding this to check if styles apply */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .rowInputs {
+    display: flex;
+    flex-direction: column;
+  }
+}
