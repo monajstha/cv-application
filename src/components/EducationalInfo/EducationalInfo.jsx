@@ -2,7 +2,6 @@ import React from "react";
 import TextInput from "../TextInput/TextInput";
 
 export default function EducationalInfo({ data, handleInput, index = 0 }) {
-  console.log("educational info", data, data[index]);
   return (
     <>
       <TextInput
@@ -13,7 +12,7 @@ export default function EducationalInfo({ data, handleInput, index = 0 }) {
         onChange={(e) =>
           handleInput("educationalInfo", "school_name", e.target.value, index)
         }
-        value={data?.[index]?.school_name || ""}
+        value={data?.educationalInfo[index]?.school_name}
       />
 
       <TextInput
@@ -29,7 +28,7 @@ export default function EducationalInfo({ data, handleInput, index = 0 }) {
             index
           )
         }
-        value={data?.[index]?.education_title}
+        value={data?.educationalInfo[index]?.education_title}
       />
 
       <div className="rowInputs">
@@ -47,7 +46,7 @@ export default function EducationalInfo({ data, handleInput, index = 0 }) {
               index
             )
           }
-          value={data?.[index]?.education_start_date}
+          value={data?.educationalInfo[index]?.education_start_date}
         />
 
         <TextInput
@@ -64,7 +63,7 @@ export default function EducationalInfo({ data, handleInput, index = 0 }) {
               index
             )
           }
-          value={data?.[index]?.education_completion_date}
+          value={data?.educationalInfo[index]?.education_completion_date}
         />
       </div>
     </>

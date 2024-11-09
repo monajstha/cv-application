@@ -2,22 +2,16 @@ import React, { useState } from "react";
 import EducationalInfo from "../EducationalInfo/EducationalInfo";
 import TextInput from "../TextInput/TextInput";
 import "./CvForm.css";
+import { educationalData } from "../../helpers/constants";
 
-export default function CvForm({ data, handleInput, handleSubmit }) {
-  console.log("Inside CvForm", data);
-  const renderEducationalInfo = (index = 0) => {
-    return (
-      <EducationalInfo
-        data={data?.educationalInfo}
-        handleInput={handleInput}
-        index={index}
-      />
-    );
-  };
-
-  const [educationalInfo, setEducationalInfo] = useState([
-    renderEducationalInfo(),
-  ]);
+export default function CvForm({
+  data,
+  handleInput,
+  handleSubmit,
+  handleAddInputSection,
+  handleRemoveInputSection,
+}) {
+  // console.log("Inside CvForm", data);
 
   return (
     <form key={"CvForm"} id="cv_form" onSubmit={handleSubmit}>
@@ -59,35 +53,47 @@ export default function CvForm({ data, handleInput, handleSubmit }) {
       <section key={"educationalInfo"}>
         <h3>Educational Experience</h3>
 
-        {educationalInfo?.map((item, index) => {
+        {data?.educationalInfo?.map((item, index) => {
+          console.log("++++++", { index });
           return (
-            <div key={data?.educationalInfo[index]?.school_name}>{item}</div>
+            <div>
+              <EducationalInfo
+                key={item?.id}
+                data={data}
+                handleInput={handleInput}
+                index={index}
+              />
+              {index > 0 && (
+                <button
+                  key={index}
+                  onClick={() =>
+                    handleRemoveInputSection("educationalInfo", item?.id)
+                  }
+                >
+                  Remove
+                </button>
+              )}
+            </div>
           );
         })}
       </section>
 
       <button
         onClick={() =>
-          setEducationalInfo((prevState) => [
-            ...prevState,
-            renderEducationalInfo(prevState.length),
-          ])
+          handleAddInputSection("educationalInfo", {
+            id: new Date(),
+            ...educationalData,
+          })
         }
       >
         Add
       </button>
 
-      {educationalInfo.length > 1 && (
-        <button
-          onClick={() => {
-            const allEducationalInfo = educationalInfo.map((item) => item);
-            allEducationalInfo.pop();
-            setEducationalInfo(allEducationalInfo);
-          }}
-        >
+      {/* {data?.educationalInfo.length > 1 && (
+        <button onClick={() => handleRemoveInputSection("educationalInfo")}>
           Remove
         </button>
-      )}
+      )} */}
 
       <section key={"professionalInfo"}>
         <h3>Professional Experience</h3>

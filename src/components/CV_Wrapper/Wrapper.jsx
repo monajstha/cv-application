@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { educationalData, professionalData } from "../../helpers/constants";
 import CvForm from "../CV_Form/CvForm";
 import Preview from "../CV_Preview/Preview";
 import "./wrapper.css";
@@ -12,24 +13,17 @@ export default function Wrapper() {
     },
     educationalInfo: [
       {
-        school_name: "",
-        education_title: "",
-        education_start_date: "",
-        education_completion_date: "",
+        id: new Date(),
+        ...educationalData,
       },
     ],
     professionalInfo: [
       {
-        company_name: "",
-        job_position: "",
-        job_start_date: "",
-        job_end_date: "",
-        job_responsibilities: "",
+        id: new Date(),
+        ...professionalData,
       },
     ],
   });
-
-  console.log({ data });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,20 +31,12 @@ export default function Wrapper() {
   };
 
   const handleInput = (parent, key, value, index) => {
-    console.log("----- Inside handle Input -----");
-    console.log({ parent }, { key }, { value }, { index });
-
     setData((prevState) => {
-      console.log({ prevState });
       let updatedArray = null;
       if (Array.isArray(prevState[parent])) {
         updatedArray = prevState[parent].map((item, i) =>
           i === index ? { ...item, [key]: value } : item
         );
-        updatedArray[index] = {
-          ...updatedArray[index],
-          [key]: value,
-        };
       } else {
         updatedArray = {
           ...prevState[parent],
@@ -65,6 +51,24 @@ export default function Wrapper() {
     });
   };
 
+  const handleAddInputSection = (parent, newInputs) => {
+    const update = data?.[parent]?.map((item) => item);
+    update.push(newInputs);
+    setData((prevState) => ({
+      ...prevState,
+      [parent]: update,
+    }));
+  };
+
+  const handleRemoveInputSection = (parent, removeId) => {
+    console.log("Inside remove Input Section");
+    const update = data?.[parent]?.filter((item) => item?.id !== removeId);
+    setData((prevState) => ({
+      ...prevState,
+      [parent]: update,
+    }));
+  };
+
   return (
     <div className="container">
       <div className="formContainer">
@@ -72,6 +76,8 @@ export default function Wrapper() {
           data={data}
           handleInput={handleInput}
           handleSubmit={handleSubmit}
+          handleAddInputSection={handleAddInputSection}
+          handleRemoveInputSection={handleRemoveInputSection}
         />
       </div>
       <div className="previewContainer">
