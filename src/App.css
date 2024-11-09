@@ -5,8 +5,5 @@
 }
 
 .appContainer {
-  /* width: 80%; */
-  padding: 36px;
-  display: flex;
-  justify-content: center;
+  /* padding: 36px; */
 }

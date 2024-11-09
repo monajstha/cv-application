@@ -1,6 +1,11 @@
-.container {
-  padding: 0 16px;
-  background-color: aliceblue;
+#id_form {
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .rowInputs {

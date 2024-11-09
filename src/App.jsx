@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import PersonalInfoInput from "./components/PersonalInfoInput/PersonalInfoInput";
+import Preview from "./components/CV_Preview/Preview";
+import PersonalInfoInput from "./components/CV_Wrapper/Wrapper";
 import TextInput from "./components/TextInput/TextInput";
 
 function App() {
