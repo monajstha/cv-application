@@ -35,17 +35,17 @@ export default function CvForm({
               handleInput={handleInput}
               index={index}
             />
-            {index > 0 && (
-              <button
-                className="removeSectionBtn"
-                key={index}
-                onClick={() =>
-                  handleRemoveInputSection("educationalInfo", item?.id)
-                }
-              >
-                Remove
-              </button>
-            )}
+            {/* {index > 0 && ( */}
+            <button
+              className="removeSectionBtn"
+              key={index}
+              onClick={() =>
+                handleRemoveInputSection("educationalInfo", item?.id)
+              }
+            >
+              Remove
+            </button>
+            {/* )} */}
           </div>
         ))}
         <button
@@ -71,17 +71,17 @@ export default function CvForm({
               handleInput={handleInput}
               index={index}
             />
-            {index > 0 && (
-              <button
-                className="removeSectionBtn"
-                key={item?.id}
-                onClick={() =>
-                  handleRemoveInputSection("professionalInfo", item?.id)
-                }
-              >
-                Remove
-              </button>
-            )}
+            {/* {index > 0 && ( */}
+            <button
+              className="removeSectionBtn"
+              key={item?.id}
+              onClick={() =>
+                handleRemoveInputSection("professionalInfo", item?.id)
+              }
+            >
+              Remove
+            </button>
+            {/* )} */}
           </div>
         ))}
         <button
