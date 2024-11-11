@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import EducationalInfo from "../EducationalInfo/EducationalInfo";
 import TextInput from "../TextInput/TextInput";
 import "./CvForm.css";
-import { educationalData } from "../../helpers/constants";
+import { educationalData, professionalData } from "../../helpers/constants";
+import ProfessionalInfo from "../ProfessionalInfo/ProfessionalInfo";
 
 export default function CvForm({
   data,
@@ -53,112 +54,74 @@ export default function CvForm({
       <section key={"educationalInfo"}>
         <h3>Educational Experience</h3>
 
-        {data?.educationalInfo?.map((item, index) => {
-          console.log("++++++", { index });
-          return (
-            <div>
-              <EducationalInfo
-                key={item?.id}
-                data={data}
-                handleInput={handleInput}
-                index={index}
-              />
-              {index > 0 && (
-                <button
-                  key={index}
-                  onClick={() =>
-                    handleRemoveInputSection("educationalInfo", item?.id)
-                  }
-                >
-                  Remove
-                </button>
-              )}
-            </div>
-          );
-        })}
-      </section>
-
-      <button
-        onClick={() =>
-          handleAddInputSection("educationalInfo", {
-            id: new Date(),
-            ...educationalData,
-          })
-        }
-      >
-        Add
-      </button>
-
-      {/* {data?.educationalInfo.length > 1 && (
-        <button onClick={() => handleRemoveInputSection("educationalInfo")}>
-          Remove
+        {data?.educationalInfo?.map((item, index) => (
+          <div>
+            <EducationalInfo
+              key={item?.id}
+              data={data}
+              handleInput={handleInput}
+              index={index}
+            />
+            {index > 0 && (
+              <button
+                className="removeSectionBtn"
+                key={index}
+                onClick={() =>
+                  handleRemoveInputSection("educationalInfo", item?.id)
+                }
+              >
+                Remove
+              </button>
+            )}
+          </div>
+        ))}
+        <button
+          className="addSectionBtn"
+          onClick={() =>
+            handleAddInputSection("educationalInfo", {
+              id: new Date(),
+              ...educationalData,
+            })
+          }
+        >
+          Add
         </button>
-      )} */}
+      </section>
 
       <section key={"professionalInfo"}>
         <h3>Professional Experience</h3>
-        <TextInput
-          id="company_name"
-          label={"Company Name"}
-          type="text"
-          placeholder="Enter the company's name"
-          onChange={(e) =>
-            handleInput("professionalInfo", "company_name", e.target.value)
+        {data?.professionalInfo?.map((item, index) => (
+          <div>
+            <ProfessionalInfo
+              key={item?.id}
+              data={data}
+              handleInput={handleInput}
+              index={index}
+            />
+            {index > 0 && (
+              <button
+                className="removeSectionBtn"
+                key={index}
+                onClick={() =>
+                  handleRemoveInputSection("professionalInfo", item?.id)
+                }
+              >
+                Remove
+              </button>
+            )}
+          </div>
+        ))}
+        <button
+          className="addSectionBtn"
+          onClick={() =>
+            handleAddInputSection("professionalInfo", {
+              id: new Date(),
+              ...professionalData,
+            })
           }
-          value={data?.company_name}
-        />
-
-        <TextInput
-          id="job_position"
-          label={"Work Position/Title"}
-          type="text"
-          placeholder="Enter the company's name"
-          onChange={(e) =>
-            handleInput("professionalInfo", "job_position", e.target.value)
-          }
-          value={data?.job_position}
-        />
-
-        <div className="rowInputs">
-          <TextInput
-            id="job_start_date"
-            className="calendar"
-            label={"Start Date"}
-            type="date"
-            placeholder="Enter the start date"
-            onChange={(e) =>
-              handleInput("professionalInfo", "job_start_date", e.target.value)
-            }
-            value={data?.job_start_date}
-          />
-
-          <TextInput
-            id="job_end_date"
-            className="calendar"
-            label={"End Date"}
-            type="date"
-            placeholder="Enter the end date"
-            onChange={(e) =>
-              handleInput("professionalInfo", "job_end_date", e.target.value)
-            }
-            value={data?.job_end_date}
-          />
-        </div>
-
-        <TextInput
-          id="job_responsibilities"
-          label={"Main Responsibilities"}
-          type="text"
-          placeholder="Enter your main roles or responsibilities"
-          onChange={(e) =>
-            handleInput(
-              "professionalInfo",
-              "job_responsibilities",
-              e.target.value
-            )
-          }
-          value={data?.job_responsibilities}
-        />
+        >
+          Add
+        </button>
       </section>
     </form>
   );

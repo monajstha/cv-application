@@ -9,11 +9,3 @@
 .label {
   /* align-self: flex-start; */
 }
-
-.textInput {
-  width: 100%;
-  padding: 7px;
-  border-radius: 3px;
-  font-size: 1rem;
-  margin-top: 3px;
-}

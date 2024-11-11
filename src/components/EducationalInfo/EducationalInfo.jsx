@@ -3,7 +3,7 @@ import TextInput from "../TextInput/TextInput";
 
 export default function EducationalInfo({ data, handleInput, index = 0 }) {
   return (
-    <>
+    <div className="sectionedInputWrapper">
       <TextInput
         id="school_name"
         label={"Educational Institution Name"}
@@ -66,6 +66,6 @@ export default function EducationalInfo({ data, handleInput, index = 0 }) {
           value={data?.educationalInfo[index]?.education_completion_date}
         />
       </div>
-    </>
+    </div>
   );
 }
