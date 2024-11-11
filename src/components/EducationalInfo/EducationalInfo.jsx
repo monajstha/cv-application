@@ -17,22 +17,6 @@ export default function EducationalInfo({ data, handleInput, index = 0 }) {
       />
 
       <TextInput
-        id="education_title"
-        label={"Title"}
-        type="text"
-        placeholder={"Enter your education title/your degree"}
-        onChange={(e) =>
-          handleInput(
-            "educationalInfo",
-            "education_title",
-            e.target.value,
-            index
-          )
-        }
-        value={data?.educationalInfo[index]?.education_title}
-      />
-
-      <TextInput
         id="school_location"
         label={"Location"}
         type="text"
@@ -70,7 +54,7 @@ export default function EducationalInfo({ data, handleInput, index = 0 }) {
         id="education_completion_date"
         className="calendar"
         label={"Completion Date"}
-        placeholder={"Enter the completion date or expected completion date"}
+        placeholder={"Enter the completion date"}
         type="text"
         onChange={(e) =>
           handleInput(
@@ -82,6 +66,23 @@ export default function EducationalInfo({ data, handleInput, index = 0 }) {
         }
         value={data?.educationalInfo[index]?.education_completion_date}
       />
+
+      <TextInput
+        id="education_title"
+        label={"Title"}
+        type="text"
+        placeholder={"Enter your education title/your degree"}
+        onChange={(e) =>
+          handleInput(
+            "educationalInfo",
+            "education_title",
+            e.target.value,
+            index
+          )
+        }
+        value={data?.educationalInfo[index]?.education_title}
+      />
+
       {/* </div> */}
     </>
   );

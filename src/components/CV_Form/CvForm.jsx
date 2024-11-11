@@ -1,68 +1,34 @@
 import React, { useState } from "react";
 import EducationalInfo from "../EducationalInfo/EducationalInfo";
-import TextInput from "../TextInput/TextInput";
 import "./CvForm.css";
-import { educationalData, professionalData } from "../../helpers/constants";
+import {
+  educationalData,
+  educationalDataEmpty,
+  professionalData,
+} from "../../helpers/constants";
 import ProfessionalInfo from "../ProfessionalInfo/ProfessionalInfo";
+import PersonalInfo from "../PersonalInfo/PersonalInfo";
 
 export default function CvForm({
   data,
-  handleInput,
   handleSubmit,
+  handleInput,
   handleAddInputSection,
   handleRemoveInputSection,
 }) {
-  console.log("Inside CvForm", data);
-
+  console.log("Data in CV Form", data);
   return (
     <form key={"CvForm"} id="cv_form" onSubmit={handleSubmit}>
       <section key="personalInfo">
         <h3>Personal Information</h3>
-        <TextInput
-          id={"full_name"}
-          label={"Full Name"}
-          placeholder={"Enter your full name"}
-          onChange={(e) =>
-            handleInput("personalInfo", "full_name", e.target.value)
-          }
-          value={data?.personalInfo?.full_name}
-        />
-        <TextInput
-          id="email"
-          label={"Email"}
-          type="email"
-          placeholder={"Enter .."}
-          onChange={(e) => handleInput("personalInfo", "email", e.target.value)}
-          value={data?.personalInfo?.email}
-        />
-        <TextInput
-          id="phone_number"
-          label={"Phone Number"}
-          placeholder={"Enter .."}
-          type="text"
-          onChange={(e) =>
-            handleInput("personalInfo", "phone_number", e.target.value)
-          }
-          value={data?.personalInfo?.phone_number}
-        />
-
-        <TextInput
-          id="address"
-          label={"Address"}
-          placeholder={"Enter .."}
-          type="text"
-          onChange={(e) =>
-            handleInput("personalInfo", "address", e.target.value)
-          }
-          value={data?.personalInfo?.address}
-        />
+        <PersonalInfo data={data} handleInput={handleInput} />
       </section>
 
       <section key={"educationalInfo"}>
-        <h3>Educational Experience</h3>
+        <h3>Education</h3>
 
         {data?.educationalInfo?.map((item, index) => (
-          <div className="sectionedInputWrapper">
+          <div key={item?.id} className="sectionedInputWrapper">
             <EducationalInfo
               key={item?.id}
               data={data}
@@ -87,7 +53,7 @@ export default function CvForm({
           onClick={() =>
             handleAddInputSection("educationalInfo", {
               id: new Date(),
-              ...educationalData,
+              ...educationalDataEmpty,
             })
           }
         >
@@ -98,7 +64,7 @@ export default function CvForm({
       <section key={"professionalInfo"}>
         <h3>Professional Experience</h3>
         {data?.professionalInfo?.map((item, index) => (
-          <div className="sectionedInputWrapper">
+          <div key={item?.id} className="sectionedInputWrapper">
             <ProfessionalInfo
               key={item?.id}
               data={data}
@@ -108,7 +74,7 @@ export default function CvForm({
             {index > 0 && (
               <button
                 className="removeSectionBtn"
-                key={index}
+                key={item?.id}
                 onClick={() =>
                   handleRemoveInputSection("professionalInfo", item?.id)
                 }

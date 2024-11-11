@@ -1,42 +1,71 @@
-import React, { useState } from "react";
-import { educationalData, professionalData } from "../../helpers/constants";
+import React, { useRef, useState } from "react";
+import {
+  educationalData,
+  exampleData,
+  professionalData,
+} from "../../helpers/constants";
 import CvForm from "../CV_Form/CvForm";
 import Preview from "../CV_Preview/Preview";
 import "./wrapper.css";
+import { useReactToPrint, UseReactToPrintFn } from "react-to-print";
+import ButtonGroup from "../ButtonGroup/ButtonGroup";
 
 export default function Wrapper() {
-  const [data, setData] = useState({
+  const contentRef = useRef(null);
+  const handlePrint = useReactToPrint({ contentRef });
+
+  const initialState = {
     personalInfo: {
-      full_name: "Manoj Shrestha",
-      email: "manojstha700@gmail.com",
-      phone_number: "+977 9806684908",
-      address: "Pokhara, Gandaki Province, Nepal",
+      full_name: "",
+      email: "",
+      phone_number: "",
+      address: "",
     },
     educationalInfo: [
       {
         id: new Date(),
-        ...educationalData,
-      },
-      {
-        id: new Date(),
-        ...educationalData,
+        school_name: "",
+        school_location: "",
+        education_title: "",
+        education_start_date: "",
+        education_completion_date: "",
       },
     ],
     professionalInfo: [
       {
         id: new Date(),
-        ...professionalData,
-      },
-      {
-        id: new Date(),
-        ...professionalData,
+        company_name: "",
+        company_location: "",
+        job_position: "",
+        job_start_date: "",
+        job_end_date: "",
+        job_responsibilities: "",
       },
     ],
-  });
+  };
+
+  const [data, setData] = useState({ ...exampleData });
+
+  const handleClear = () => {
+    setData({ ...initialState });
+  };
+
+  const buttons = [
+    {
+      id: 1,
+      title: "Clear All",
+      onClick: handleClear,
+    },
+    {
+      id: 2,
+      title: "Download Resume",
+      onClick: handlePrint,
+    },
+  ];
 
   const handleSubmit = (e) => {
+    // stops the form from submitting
     e.preventDefault();
-    console.log({ data });
   };
 
   const handleInput = (parent, key, value, index) => {
@@ -61,16 +90,16 @@ export default function Wrapper() {
   };
 
   const handleAddInputSection = (parent, newInputs) => {
-    const update = data?.[parent]?.map((item) => item);
-    update.push(newInputs);
-    setData((prevState) => ({
-      ...prevState,
-      [parent]: update,
-    }));
+    setData((prevState) => {
+      const updatedArr = [...prevState[parent], newInputs];
+      return {
+        ...prevState,
+        [parent]: updatedArr,
+      };
+    });
   };
 
   const handleRemoveInputSection = (parent, removeId) => {
-    console.log("Inside remove Input Section");
     const update = data?.[parent]?.filter((item) => item?.id !== removeId);
     setData((prevState) => ({
       ...prevState,
@@ -80,16 +109,17 @@ export default function Wrapper() {
 
   return (
     <div className="container">
+      <ButtonGroup buttons={buttons} />
       <div className="formContainer">
         <CvForm
           data={data}
-          handleInput={handleInput}
           handleSubmit={handleSubmit}
+          handleInput={handleInput}
           handleAddInputSection={handleAddInputSection}
           handleRemoveInputSection={handleRemoveInputSection}
         />
       </div>
-      <div className="previewContainer">
+      <div ref={contentRef} className="previewContainer">
         <Preview data={data} />
       </div>
     </div>
