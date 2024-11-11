@@ -2,6 +2,7 @@ import React from "react";
 import TextInput from "../TextInput/TextInput";
 
 export default function EducationalInfo({ data, handleInput, index = 0 }) {
+  console.log(data?.educationalInfo, index);
   return (
     <>
       <TextInput
@@ -31,13 +32,29 @@ export default function EducationalInfo({ data, handleInput, index = 0 }) {
         value={data?.educationalInfo[index]?.education_title}
       />
 
+      <TextInput
+        id="school_location"
+        label={"Location"}
+        type="text"
+        placeholder={"Enter your school/college address "}
+        onChange={(e) =>
+          handleInput(
+            "educationalInfo",
+            "school_location",
+            e.target.value,
+            index
+          )
+        }
+        value={data?.educationalInfo[index]?.school_location}
+      />
+
       {/* <div className="rowInputs"> */}
       <TextInput
         id="education_start_date"
         className="calendar"
         label={"Start Date"}
         placeholder={"Enter the start date"}
-        type="date"
+        type="text"
         onChange={(e) =>
           handleInput(
             "educationalInfo",
@@ -54,7 +71,7 @@ export default function EducationalInfo({ data, handleInput, index = 0 }) {
         className="calendar"
         label={"Completion Date"}
         placeholder={"Enter the completion date or expected completion date"}
-        type="date"
+        type="text"
         onChange={(e) =>
           handleInput(
             "educationalInfo",

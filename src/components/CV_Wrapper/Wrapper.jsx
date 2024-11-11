@@ -7,17 +7,26 @@ import "./wrapper.css";
 export default function Wrapper() {
   const [data, setData] = useState({
     personalInfo: {
-      full_name: "",
-      email: "",
-      phone_number: "",
+      full_name: "Manoj Shrestha",
+      email: "manojstha700@gmail.com",
+      phone_number: "+977 9806684908",
+      address: "Pokhara, Gandaki Province, Nepal",
     },
     educationalInfo: [
       {
         id: new Date(),
         ...educationalData,
       },
+      {
+        id: new Date(),
+        ...educationalData,
+      },
     ],
     professionalInfo: [
+      {
+        id: new Date(),
+        ...professionalData,
+      },
       {
         id: new Date(),
         ...professionalData,

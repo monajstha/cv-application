@@ -6,7 +6,7 @@ import TextInput from "./components/TextInput/TextInput";
 
 function App() {
   return (
-    <div className="appContainer">
+    <div>
       <PersonalInfoInput />
     </div>
   );

@@ -26,12 +26,28 @@ export default function ProfessionalInfo({ data, handleInput, index = 0 }) {
         value={data?.professionalInfo[index]?.job_position}
       />
 
+      <TextInput
+        id="company_location"
+        label={"Location"}
+        type="text"
+        placeholder="Enter the company's name"
+        onChange={(e) =>
+          handleInput(
+            "professionalInfo",
+            "company_location",
+            e.target.value,
+            index
+          )
+        }
+        value={data?.professionalInfo[index]?.company_location}
+      />
+
       {/* <div className="rowInputs"> */}
       <TextInput
         id="job_start_date"
         className="calendar"
         label={"Start Date"}
-        type="date"
+        type="text"
         placeholder="Enter the start date"
         onChange={(e) =>
           handleInput(
@@ -48,7 +64,7 @@ export default function ProfessionalInfo({ data, handleInput, index = 0 }) {
         id="job_end_date"
         className="calendar"
         label={"End Date"}
-        type="date"
+        type="text"
         placeholder="Enter the end date"
         onChange={(e) =>
           handleInput("professionalInfo", "job_end_date", e.target.value, index)

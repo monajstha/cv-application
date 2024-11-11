@@ -12,7 +12,7 @@ export default function CvForm({
   handleAddInputSection,
   handleRemoveInputSection,
 }) {
-  // console.log("Inside CvForm", data);
+  console.log("Inside CvForm", data);
 
   return (
     <form key={"CvForm"} id="cv_form" onSubmit={handleSubmit}>
@@ -25,7 +25,7 @@ export default function CvForm({
           onChange={(e) =>
             handleInput("personalInfo", "full_name", e.target.value)
           }
-          value={data?.full_name}
+          value={data?.personalInfo?.full_name}
         />
         <TextInput
           id="email"
@@ -33,17 +33,28 @@ export default function CvForm({
           type="email"
           placeholder={"Enter .."}
           onChange={(e) => handleInput("personalInfo", "email", e.target.value)}
-          value={data?.email}
+          value={data?.personalInfo?.email}
         />
         <TextInput
           id="phone_number"
           label={"Phone Number"}
           placeholder={"Enter .."}
-          type="number"
+          type="text"
           onChange={(e) =>
             handleInput("personalInfo", "phone_number", e.target.value)
           }
-          value={data?.phone_number}
+          value={data?.personalInfo?.phone_number}
+        />
+
+        <TextInput
+          id="address"
+          label={"Address"}
+          placeholder={"Enter .."}
+          type="text"
+          onChange={(e) =>
+            handleInput("personalInfo", "address", e.target.value)
+          }
+          value={data?.personalInfo?.address}
         />
       </section>
 
