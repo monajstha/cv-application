@@ -1,6 +1,5 @@
 import React from "react";
 import TextInput from "../TextInput/TextInput";
-import "./professionalInfo.css";
 
 export default function ProfessionalInfo({ data, handleInput, index = 0 }) {
   return (
@@ -27,62 +26,43 @@ export default function ProfessionalInfo({ data, handleInput, index = 0 }) {
         value={data?.professionalInfo[index]?.job_position}
       />
 
-      <div className="rowInputs">
-        <TextInput
-          id="job_start_date"
-          className="calendar"
-          label={"Start Date"}
-          type="date"
-          placeholder="Enter the start date"
-          onChange={(e) =>
-            handleInput(
-              "professionalInfo",
-              "job_start_date",
-              e.target.value,
-              index
-            )
-          }
-          value={data?.professionalInfo[index]?.job_start_date}
-        />
-
-        <TextInput
-          id="job_end_date"
-          className="calendar"
-          label={"End Date"}
-          type="date"
-          placeholder="Enter the end date"
-          onChange={(e) =>
-            handleInput(
-              "professionalInfo",
-              "job_end_date",
-              e.target.value,
-              index
-            )
-          }
-          value={data?.professionalInfo[index]?.job_end_date}
-        />
-      </div>
-
-      <label htmlFor="job_responsibilities"></label>
-      <textarea
-        id="job_responsibilities"
-        rows={5}
-        cols={50}
-        placeholder="Enter your job responsibilities"
+      {/* <div className="rowInputs"> */}
+      <TextInput
+        id="job_start_date"
+        className="calendar"
+        label={"Start Date"}
+        type="date"
+        placeholder="Enter the start date"
         onChange={(e) =>
           handleInput(
             "professionalInfo",
-            "job_responsibilities",
+            "job_start_date",
             e.target.value,
             index
           )
         }
+        value={data?.professionalInfo[index]?.job_start_date}
       />
+
       <TextInput
+        id="job_end_date"
+        className="calendar"
+        label={"End Date"}
+        type="date"
+        placeholder="Enter the end date"
+        onChange={(e) =>
+          handleInput("professionalInfo", "job_end_date", e.target.value, index)
+        }
+        value={data?.professionalInfo[index]?.job_end_date}
+      />
+      {/* </div> */}
+
+      <label htmlFor="job_responsibilities">Job Responsibilities</label>
+      <textarea
         id="job_responsibilities"
-        label={"Main Responsibilities"}
-        type="text"
-        placeholder="Enter your main roles or responsibilities"
+        rows={7}
+        cols={50}
+        placeholder="Enter your job responsibilities"
         onChange={(e) =>
           handleInput(
             "professionalInfo",

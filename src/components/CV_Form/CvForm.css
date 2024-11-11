@@ -26,9 +26,24 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
   .rowInputs {
     display: flex;
     flex-direction: column;
   }
+} */
+
+.addSectionBtn {
+  display: flex;
+  justify-self: center;
+  color: white;
+  margin-top: 14px;
+}
+
+.removeSectionBtn {
+  display: flex;
+  justify-self: flex-end;
+  background-color: red;
+  color: white;
+  margin-top: 10px;
 }

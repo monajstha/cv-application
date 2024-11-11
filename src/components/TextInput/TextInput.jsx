@@ -9,7 +9,7 @@ export default function TextInput({
   ...otherProps
 }) {
   return (
-    <div className="container">
+    <div>
       <label htmlFor={id} className="label">
         {label}
       </label>
