@@ -34,7 +34,7 @@ export default function Preview({ data }) {
   };
 
   return (
-    <div className="previewContainer">
+    <div className="previewWrapper">
       {" "}
       {/* Personal Info */}
       {isSectionRendered(personalInfo) && (

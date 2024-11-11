@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import EducationalInfo from "../EducationalInfo/EducationalInfo";
 import "./CvForm.css";
 import {
-  educationalData,
   educationalDataEmpty,
-  professionalData,
+  professionalDataEmpty,
 } from "../../helpers/constants";
 import ProfessionalInfo from "../ProfessionalInfo/ProfessionalInfo";
 import PersonalInfo from "../PersonalInfo/PersonalInfo";
@@ -16,7 +15,6 @@ export default function CvForm({
   handleAddInputSection,
   handleRemoveInputSection,
 }) {
-  console.log("Data in CV Form", data);
   return (
     <form key={"CvForm"} id="cv_form" onSubmit={handleSubmit}>
       <section key="personalInfo">
@@ -35,7 +33,6 @@ export default function CvForm({
               handleInput={handleInput}
               index={index}
             />
-            {/* {index > 0 && ( */}
             <button
               className="removeSectionBtn"
               key={index}
@@ -45,7 +42,6 @@ export default function CvForm({
             >
               Remove
             </button>
-            {/* )} */}
           </div>
         ))}
         <button
@@ -71,7 +67,6 @@ export default function CvForm({
               handleInput={handleInput}
               index={index}
             />
-            {/* {index > 0 && ( */}
             <button
               className="removeSectionBtn"
               key={item?.id}
@@ -81,7 +76,6 @@ export default function CvForm({
             >
               Remove
             </button>
-            {/* )} */}
           </div>
         ))}
         <button
@@ -89,7 +83,7 @@ export default function CvForm({
           onClick={() =>
             handleAddInputSection("professionalInfo", {
               id: new Date(),
-              ...professionalData,
+              ...professionalDataEmpty,
             })
           }
         >

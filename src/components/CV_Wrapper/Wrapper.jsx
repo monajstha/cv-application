@@ -1,13 +1,9 @@
 import React, { useRef, useState } from "react";
-import {
-  educationalData,
-  exampleData,
-  professionalData,
-} from "../../helpers/constants";
+import { exampleData } from "../../helpers/constants";
 import CvForm from "../CV_Form/CvForm";
 import Preview from "../CV_Preview/Preview";
 import "./wrapper.css";
-import { useReactToPrint, UseReactToPrintFn } from "react-to-print";
+import { useReactToPrint } from "react-to-print";
 import ButtonGroup from "../ButtonGroup/ButtonGroup";
 
 export default function Wrapper() {
