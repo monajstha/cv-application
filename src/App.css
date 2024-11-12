@@ -35,10 +35,13 @@ button {
 
 section {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
-  padding: 24px;
-  margin-bottom: 24px;
   border-radius: 7px;
   background-color: white;
+}
+
+.inputSection {
+  padding: 24px;
+  margin-top: 20px;
 }
 
 .sectionedInputWrapper {

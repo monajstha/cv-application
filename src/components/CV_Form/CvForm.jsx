@@ -17,12 +17,12 @@ export default function CvForm({
 }) {
   return (
     <form key={"CvForm"} id="cv_form" onSubmit={handleSubmit}>
-      <section key="personalInfo">
+      <section className="inputSection" key="personalInfo">
         <h3>Personal Information</h3>
         <PersonalInfo data={data} handleInput={handleInput} />
       </section>
 
-      <section key={"educationalInfo"}>
+      <section className="inputSection" key={"educationalInfo"}>
         <h3>Education</h3>
 
         {data?.educationalInfo?.map((item, index) => (
@@ -57,7 +57,7 @@ export default function CvForm({
         </button>
       </section>
 
-      <section key={"professionalInfo"}>
+      <section className="inputSection" key={"professionalInfo"}>
         <h3>Professional Experience</h3>
         {data?.professionalInfo?.map((item, index) => (
           <div key={item?.id} className="sectionedInputWrapper">
