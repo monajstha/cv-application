@@ -1,6 +1,6 @@
 import React from "react";
 import EducationalInfo from "../EducationalInfo/EducationalInfo";
-import "./CvForm.css";
+import "../../styles/cvForm.css";
 import {
   educationalDataEmpty,
   professionalDataEmpty,

@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import "./preview.css";
+import "../../styles/preview.css";
 
 export default function Preview({ data }) {
   const { personalInfo, educationalInfo, professionalInfo } = data;
@@ -9,9 +9,9 @@ export default function Preview({ data }) {
     const list = job_responsibilities
       .substring(0, job_responsibilities.length - 1)
       .split(".")
-      .map((item) => (
-        <ul className="list">
-          <li>{item}</li>
+      .map((item, index) => (
+        <ul key={index} className="list">
+          <li key={index}>{item}</li>
         </ul>
       ));
     return list;
@@ -58,7 +58,7 @@ export default function Preview({ data }) {
             <p className="sectionHeader">Education</p>
           </div>
           {educationalInfo?.map((item) => (
-            <div className="sectionValueWrapper">
+            <div key={item?.id} className="sectionValueWrapper">
               <div className="infoTitleWrapper">
                 <div className="dateWrapper">
                   <p>{item?.school_name}</p>
@@ -89,7 +89,7 @@ export default function Preview({ data }) {
             <p className="sectionHeader">Experience</p>
           </div>
           {professionalInfo?.map((item) => (
-            <div className="sectionValueWrapper">
+            <div key={item?.id} className="sectionValueWrapper">
               <div className="infoTitleWrapper">
                 <div className="dateWrapper">
                   <p>{item?.company_name}</p>

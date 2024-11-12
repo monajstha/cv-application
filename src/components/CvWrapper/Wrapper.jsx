@@ -1,14 +1,21 @@
 import React, { useRef, useState } from "react";
 import { exampleData } from "../../helpers/constants";
-import CvForm from "../CV_Form/CvForm";
-import Preview from "../CV_Preview/Preview";
-import "./wrapper.css";
+import CvForm from "../CvForm/CvForm";
+import Preview from "../CvPreview/Preview";
+import "../../styles/wrapper.css";
 import { useReactToPrint } from "react-to-print";
 import ButtonGroup from "../ButtonGroup/ButtonGroup";
 
 export default function Wrapper() {
   const contentRef = useRef(null);
   const handlePrint = useReactToPrint({ contentRef });
+
+  const handleDownloadPdf = () => {
+    // Remove box shadow on pdf
+    contentRef.current.style.boxShadow = "none";
+    handlePrint();
+    contentRef.current.style.boxShadow = "0px 3px 3px rgba(0, 0, 0, 0.2)";
+  };
 
   const initialState = {
     personalInfo: {
@@ -55,7 +62,7 @@ export default function Wrapper() {
     {
       id: 2,
       title: "Download Resume",
-      onClick: handlePrint,
+      onClick: handleDownloadPdf,
     },
   ];
 
@@ -115,7 +122,7 @@ export default function Wrapper() {
           handleRemoveInputSection={handleRemoveInputSection}
         />
       </div>
-      <div ref={contentRef} className="previewContainer">
+      <div ref={contentRef} className={`previewContainer`}>
         <Preview data={data} />
       </div>
     </div>

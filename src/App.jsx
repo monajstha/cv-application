@@ -1,5 +1,5 @@
 import "./App.css";
-import Wrapper from "./components/CV_Wrapper/Wrapper";
+import Wrapper from "./components/CvWrapper/Wrapper";
 
 function App() {
   return <Wrapper />;
