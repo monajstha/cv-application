@@ -17,14 +17,14 @@ export default function PersonalInfo({ data, handleInput }) {
         id="email"
         label={"Email"}
         type="email"
-        placeholder={"Enter .."}
+        placeholder={"Enter your email"}
         onChange={(e) => handleInput("personalInfo", "email", e.target.value)}
         value={data?.personalInfo?.email}
       />
       <TextInput
         id="phone_number"
         label={"Phone Number"}
-        placeholder={"Enter .."}
+        placeholder={"Enter your phone number"}
         type="text"
         onChange={(e) =>
           handleInput("personalInfo", "phone_number", e.target.value)
@@ -35,7 +35,7 @@ export default function PersonalInfo({ data, handleInput }) {
       <TextInput
         id="address"
         label={"Address"}
-        placeholder={"Enter .."}
+        placeholder={"Enter your address"}
         type="text"
         onChange={(e) => handleInput("personalInfo", "address", e.target.value)}
         value={data?.personalInfo?.address}
